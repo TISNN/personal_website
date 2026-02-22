@@ -2,7 +2,7 @@
 
 一个基于 Next.js 的个人网站项目，支持中英文切换与主题切换，页面风格参考极简个人作品集布局。
 
-![Uploading image.png…]()
+<img width="1463" height="738" alt="image" src="https://github.com/user-attachments/assets/6447fa2a-29cb-4f30-8c42-972b7d84f5b3" />
 
 
 ## 功能概览
