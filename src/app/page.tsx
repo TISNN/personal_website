@@ -19,7 +19,7 @@ type EducationItem = {
   id: string;
   school: { zh: string; en: string };
   level: { zh: string; en: string };
-  period: string;
+  period: { zh: string; en: string };
   location: { zh: string; en: string };
   degree: { zh: string; en: string };
 };
@@ -59,7 +59,7 @@ type PublicationItem = {
   title: { zh: string; en: string };
   venue: { zh: string; en: string };
   type: { zh: string; en: string };
-  period: string;
+  period: { zh: string; en: string };
   doi: string;
   link: string;
 };
@@ -123,6 +123,18 @@ const exploreItems: ExploreItem[] = [
     link: '#',
   },
   {
+    id: 'agent',
+    featured: true,
+    title: { zh: 'AI 智能体', en: 'AI Agent' },
+    headline: { zh: '我还在持续探索 Agent。', en: 'I am still exploring agent systems.' },
+    description: {
+      zh: '目前在持续研究与实践基于 Agent 的工作流与应用场景。',
+      en: 'I am continuously researching and building agent-based workflows and applications.',
+    },
+    linkLabel: { zh: '持续更新', en: 'Ongoing' },
+    link: '#',
+  },
+  {
     id: 'photo',
     featured: false,
     title: { zh: '摄影', en: 'Photography' },
@@ -141,7 +153,7 @@ const educationItems: EducationItem[] = [
     id: 'columbia',
     school: { zh: '阿姆斯特丹大学 / 阿姆斯特丹自由大学', en: 'University of Amsterdam / Vrije Universiteit Amsterdam' },
     level: { zh: '研究生', en: 'Graduate' },
-    period: '09/2021 - 12/2023',
+    period: { zh: '2021.09 - 2023.12', en: '2021.09 - 2023.12' },
     location: { zh: '阿姆斯特丹, 荷兰', en: 'Amsterdam, Netherlands' },
     degree: { zh: '计算机科学硕士（大数据工程方向）', en: 'MSc in Computer Science (Big Data Engineering)' },
   },
@@ -149,7 +161,7 @@ const educationItems: EducationItem[] = [
     id: 'osu',
     school: { zh: '澳门科技大学', en: 'Macau University of Science and Technology' },
     level: { zh: '本科生', en: 'Undergraduate' },
-    period: '09/2017 - 08/2021',
+    period: { zh: '2017.09 - 2021.08', en: '2017.09 - 2021.08' },
     location: { zh: '澳门, 中国', en: 'Macao, China' },
     degree: { zh: '软件工程工学学士', en: 'BEng in Software Engineering' },
   },
@@ -203,7 +215,7 @@ const workItems: WorkItem[] = [
     },
     title: { zh: '副主席', en: 'Vice President' },
     location: { zh: '澳门, 中国', en: 'Macau, China' },
-    period: { zh: '2024.08 - 至今', en: 'Aug 2024 - Present' },
+    period: { zh: '2024.08 - 至今', en: '2024.08 - Present' },
     description: {
       zh: 'CHM 教育与文化交流协会致力于推动中国、香港、澳门及其他地区之间的教育与文化交流。协会作为桥梁，促进教育机构、文化组织与个人之间的相互理解、协作与知识共享。',
       en: 'The CHM Education and Cultural Exchange Association is an organization dedicated to promoting educational and cultural exchanges between China, Hong Kong, Macau, and other regions. The association serves as a bridge to enhance mutual understanding, collaboration, and knowledge sharing among educational institutions, cultural organizations, and individuals.',
@@ -217,7 +229,7 @@ const workItems: WorkItem[] = [
     },
     title: { zh: '理事', en: 'Director' },
     location: { zh: '澳门, 中国', en: 'Macau, China' },
-    period: { zh: '2024.07 - 至今', en: 'Jul 2024 - Present' },
+    period: { zh: '2024.07 - 至今', en: '2024.07 - Present' },
     description: {
       zh: '澳门高校青年联合会成立于 2009 年，连接来自香港、澳门、台湾、中国内地及海外的大学生，促进青年友谊并加强高校与企业之间的联系。',
       en: 'The Macau Youth Federation of University Students was established in 2009. It connects university students from Hong Kong, Macau, Taiwan, Mainland China, and abroad, fostering friendships and strengthening ties between universities and enterprises.',
@@ -228,7 +240,7 @@ const workItems: WorkItem[] = [
     org: { zh: '学屿教育', en: 'StudyLandsEdu' },
     title: { zh: 'CEO', en: 'CEO' },
     location: { zh: '上海, 中国', en: 'Shanghai, China' },
-    period: { zh: '2023.10 - 至今', en: 'Oct 2023 - Present' },
+    period: { zh: '2023.10 - 至今', en: '2023.10 - Present' },
     description: {
       zh: 'StudyLandsEdu 是一家技术驱动的国际教育公司，聚焦留学服务创新。我们通过大数据与 AI 整合海外教育资源，提供高质量留学服务；同时为其他机构提供运营管理解决方案，帮助其降本增效。',
       en: 'StudyLandsEdu is a tech-driven education company focused on innovating international education. We integrate overseas educational resources to deliver high-quality study abroad services using big data and AI. SLE also offers comprehensive operational management solutions to other companies, helping them cut costs and boost efficiency.',
@@ -239,7 +251,7 @@ const workItems: WorkItem[] = [
     org: { zh: '阿姆斯特丹自由大学', en: 'Vrije Universiteit Amsterdam' },
     title: { zh: '教学助理', en: 'Teaching Assistant' },
     location: { zh: '阿姆斯特丹, 荷兰', en: 'Amsterdam, Netherlands' },
-    period: { zh: '2023.04 - 2023.06', en: 'Apr 2023 - Jun 2023' },
+    period: { zh: '2023.04 - 2023.06', en: '2023.04 - 2023.06' },
     description: {
       zh: '协助硕士课程《Data Mining Technologies》的教学工作，包括课程准备与授课、习题讲解以及作业批改。',
       en: 'Assisted with teaching the master course in Data Mining Technologies, including preparing and delivering lectures, conducting problem-solving sessions, and grading assignments.',
@@ -250,7 +262,7 @@ const workItems: WorkItem[] = [
     org: { zh: '正中投资集团', en: 'Genzon Investment Group' },
     title: { zh: '产品经理实习生', en: 'Product Manager Intern' },
     location: { zh: '深圳, 中国', en: 'Shenzhen, China' },
-    period: { zh: '2020.07 - 2020.08', en: 'Jul 2020 - Aug 2020' },
+    period: { zh: '2020.07 - 2020.08', en: '2020.07 - 2020.08' },
     description: {
       zh: '参与智慧楼宇与智慧园区等数字化转型项目，聚焦企业服务线上化方案；通过市场与客户调研支撑战略规划，并输出产品 PRD 文档与原型设计。',
       en: 'Participated in key digital transformation projects, including smart buildings and intelligent parks, focusing on online solutions for enterprise services. Conducted comprehensive market and customer research to align with strategic planning, developing product PRD documents and prototype designs.',
@@ -264,7 +276,7 @@ const workItems: WorkItem[] = [
     },
     title: { zh: '数据工程实习生', en: 'Data Engineer Intern' },
     location: { zh: '上海, 中国', en: 'Shanghai, China' },
-    period: { zh: '2019.06 - 2019.08', en: 'Jun 2019 - Aug 2019' },
+    period: { zh: '2019.06 - 2019.08', en: '2019.06 - 2019.08' },
     description: {
       zh: '基于 Hadoop 与 Spark 参与分布式数据平台改造，显著提升处理能力；主导使用 PySpark 的大规模数据处理，并通过 SQL 与 Python 构建 ETL 流程，提升数据模型的灵活性与多样性。',
       en: 'Transformed the distributed data platform with Hadoop and Spark, significantly enhancing processing capabilities. Spearheaded large-scale data processing using advanced techniques like PySpark. Developed sophisticated ETL processes with SQL and Python, optimizing data model flexibility and diversity.',
@@ -284,7 +296,7 @@ const publications: PublicationItem[] = [
       en: 'IEEE Transactions on Circuits and Systems for Video Technology',
     },
     type: { zh: '期刊文章', en: 'Journal Article' },
-    period: '2026',
+    period: { zh: '2026', en: '2026' },
     doi: '10.1109/TCSVT.2026.3651269',
     link: 'https://doi.org/10.1109/TCSVT.2026.3651269',
   },
@@ -299,7 +311,7 @@ const publications: PublicationItem[] = [
       en: '2020 2nd International Conference on Machine Learning, Big Data and Business Intelligence (MLBDBI)',
     },
     type: { zh: '会议论文', en: 'Conference Paper' },
-    period: '10/2020',
+    period: { zh: '2020.10', en: '2020.10' },
     doi: '10.1109/MLBDBI51377.2020.00040',
     link: 'https://doi.org/10.1109/MLBDBI51377.2020.00040',
   },
@@ -311,7 +323,7 @@ const researchItems: ResearchItem[] = [
     org: { zh: 'KBQA 文献综述', en: 'Literature Review of KBQA' },
     title: { zh: '知识表示与推理研究组', en: 'Knowledge Representation and Reasoning Group' },
     location: { zh: '阿姆斯特丹, 荷兰', en: 'Amsterdam, Netherlands' },
-    period: { zh: '2023.01 - 2023.08', en: 'Jan 2023 - Aug 2023' },
+    period: { zh: '2023.01 - 2023.08', en: '2023.01 - 2023.08' },
     description: {
       zh: '围绕知识库问答（KBQA）方向系统梳理 2020-2023 年代表性研究工作，总结方法演进路径，并识别当前研究中的关键趋势与空白。',
       en: 'Conducted an extensive literature review on state-of-the-art approaches to Knowledge-Based Question Answering, synthesizing findings from research papers (2020-2023) and identifying key trends and gaps in the field.',
@@ -322,7 +334,7 @@ const researchItems: ResearchItem[] = [
     org: { zh: '基于人工神经网络的股价预测', en: 'Stock Price Prediction Based on Artificial Neural Network' },
     title: { zh: '导师：Jiyue Jiang', en: 'Advised by Jiyue Jiang' },
     location: { zh: '澳门, 中国', en: 'Macau, China' },
-    period: { zh: '2020.03 - 2021.02', en: 'Mar 2020 - Feb 2021' },
+    period: { zh: '2020.03 - 2021.02', en: '2020.03 - 2021.02' },
     description: {
       zh: '构建并应用 BP 神经网络模型分析 482 个交易日的历史股价数据，在较低误差水平下实现高精度预测，并显著降低整体系统误差。',
       en: 'Developed and applied a Backpropagation neural network model to analyze 482 trading days of historical stock data and achieved high prediction accuracy with very low error rates.',
@@ -333,7 +345,7 @@ const researchItems: ResearchItem[] = [
     org: { zh: '研究助理', en: 'Research Assistant' },
     title: { zh: '导师：Smith W.L. J', en: 'Advised by Smith W.L. J' },
     location: { zh: '远程', en: 'Remote' },
-    period: { zh: '2022.09 - 2022.11', en: 'Sep 2022 - Nov 2022' },
+    period: { zh: '2022.09 - 2022.11', en: '2022.09 - 2022.11' },
     description: {
       zh: '开展基于 ECG 的心血管疾病诊断与预测深度学习算法研究，并在麻省工程医学与关键数据实验室（LEMD）完成国际生物医学数据库网站原型设计。',
       en: 'Conducted advanced research on deep learning algorithms for ECG-based cardiovascular disease diagnosis and prediction, and completed a prototype design for an international biomedical database website at the Massachusetts Laboratory for Engineering Medicine and Critical Data (LEMD).',
@@ -355,6 +367,29 @@ export default function Home() {
   const list = useMemo(
     () => (mode === 'featured' ? exploreItems.filter((item) => item.featured) : exploreItems),
     [mode]
+  );
+  const getStartSortValue = (period: string): number => {
+    const match = period.match(/(\d{4})(?:\.(\d{1,2}))?/);
+    if (!match) return 0;
+    const year = Number(match[1]);
+    const month = Number(match[2] ?? '1');
+    return year * 100 + month;
+  };
+  const sortedPublications = useMemo(
+    () => [...publications].sort((a, b) => getStartSortValue(b.period.zh) - getStartSortValue(a.period.zh)),
+    []
+  );
+  const sortedEducation = useMemo(
+    () => [...educationItems].sort((a, b) => getStartSortValue(b.period.zh) - getStartSortValue(a.period.zh)),
+    []
+  );
+  const sortedResearch = useMemo(
+    () => [...researchItems].sort((a, b) => getStartSortValue(b.period.zh) - getStartSortValue(a.period.zh)),
+    []
+  );
+  const sortedWork = useMemo(
+    () => [...workItems].sort((a, b) => getStartSortValue(b.period.zh) - getStartSortValue(a.period.zh)),
+    []
   );
 
   return (
@@ -413,7 +448,7 @@ export default function Home() {
           <article key={item.id} className="ws-item">
             <button
               type="button"
-              className="ws-item-main ws-entry-trigger"
+              className="ws-item-main ws-entry-trigger ws-explore-row-head"
               aria-expanded={expandedExploreId === item.id}
               onClick={() => setExpandedExploreId((prev) => (prev === item.id ? null : item.id))}
             >
@@ -434,7 +469,7 @@ export default function Home() {
         <div className="ws-explore-head">
           <h2>{zh ? '研究经历' : 'Research Experience'}</h2>
         </div>
-        {researchItems.map((item) => (
+        {sortedResearch.map((item) => (
           <article key={item.id} className="ws-item">
             <button
               type="button"
@@ -460,7 +495,7 @@ export default function Home() {
         <div className="ws-explore-head">
           <h2>{zh ? '论文出版物' : 'Publications'}</h2>
         </div>
-        {publications.map((item) => (
+        {sortedPublications.map((item) => (
           <article key={item.id} className="ws-item">
             <button
               type="button"
@@ -470,7 +505,7 @@ export default function Home() {
             >
               <h3>{item.title[language]}</h3>
               <p>{item.type[language]}</p>
-              <time>{item.period}</time>
+              <time>{item.period[language]}</time>
             </button>
             {expandedPublicationId === item.id ? (
               <div className="ws-item-sub ws-pub-sub">
@@ -492,7 +527,7 @@ export default function Home() {
         <div className="ws-explore-head">
           <h2>{zh ? '教育' : 'Education'}</h2>
         </div>
-        {educationItems.map((item) => (
+        {sortedEducation.map((item) => (
           <article key={item.id} className="ws-item">
             <button
               type="button"
@@ -502,7 +537,7 @@ export default function Home() {
             >
               <h3>{item.school[language]}</h3>
               <p>{item.level[language]}</p>
-              <time>{item.period}</time>
+              <time>{item.period[language]}</time>
             </button>
             {expandedEducationId === item.id ? (
               <div className="ws-item-sub ws-edu-sub">
@@ -518,7 +553,7 @@ export default function Home() {
         <div className="ws-explore-head">
           <h2>{zh ? '职业经历' : 'Career'}</h2>
         </div>
-        {workItems.map((item) => (
+        {sortedWork.map((item) => (
           <article key={item.id} className="ws-item">
             <button
               type="button"
@@ -548,7 +583,7 @@ export default function Home() {
           <article key={item.id} className="ws-item">
             <button
               type="button"
-              className="ws-item-main ws-entry-trigger"
+              className="ws-item-main ws-entry-trigger ws-other-head"
               aria-expanded={expandedOtherId === item.id}
               onClick={() => setExpandedOtherId((prev) => (prev === item.id ? null : item.id))}
             >
