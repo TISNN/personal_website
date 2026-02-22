@@ -2,8 +2,8 @@
 
 一个基于 Next.js 的个人网站项目，支持中英文切换与主题切换，页面风格参考极简个人作品集布局。
 
-## 线上地址
-- PathTree 官网：<https://path-tree.vercel.app/>
+![Uploading image.png…]()
+
 
 ## 功能概览
 - 首页展示：
