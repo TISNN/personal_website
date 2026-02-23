@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import TopNav from '@/components/TopNav';
 
@@ -10,7 +11,9 @@ type ThoughtItem = {
   content: { zh: string; en: string };
 };
 
-const thoughts: ThoughtItem[] = [
+const STORAGE_KEY = 'ws-thoughts-v1';
+
+const defaultThoughts: ThoughtItem[] = [
   {
     id: 'agent-workflow',
     date: '2026.02.22',
@@ -43,6 +46,64 @@ const thoughts: ThoughtItem[] = [
 export default function ThoughtsPage() {
   const { language } = useLanguage();
   const zh = language === 'zh';
+  const [thoughts, setThoughts] = useState<ThoughtItem[]>(defaultThoughts);
+  const [isEditing, setIsEditing] = useState(false);
+
+  useEffect(() => {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (!raw) return;
+    try {
+      const parsed = JSON.parse(raw) as ThoughtItem[];
+      if (Array.isArray(parsed)) {
+        setThoughts(parsed);
+      }
+    } catch {
+      // Ignore invalid local data and keep defaults.
+    }
+  }, []);
+
+  useEffect(() => {
+    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(thoughts));
+  }, [thoughts]);
+
+  const updateThought = (
+    id: string,
+    field: 'date' | 'titleZh' | 'titleEn' | 'contentZh' | 'contentEn',
+    value: string
+  ) => {
+    setThoughts((prev) =>
+      prev.map((item) => {
+        if (item.id !== id) return item;
+        if (field === 'date') return { ...item, date: value };
+        if (field === 'titleZh') return { ...item, title: { ...item.title, zh: value } };
+        if (field === 'titleEn') return { ...item, title: { ...item.title, en: value } };
+        if (field === 'contentZh') return { ...item, content: { ...item.content, zh: value } };
+        return { ...item, content: { ...item.content, en: value } };
+      })
+    );
+  };
+
+  const addThought = () => {
+    const now = new Date();
+    const date = `${now.getFullYear()}.${String(now.getMonth() + 1).padStart(2, '0')}.${String(now.getDate()).padStart(2, '0')}`;
+    setThoughts((prev) => [
+      {
+        id: `thought-${Date.now()}`,
+        date,
+        title: { zh: '新的思考', en: 'New Thought' },
+        content: { zh: '写下你的想法。', en: 'Write your thoughts here.' },
+      },
+      ...prev,
+    ]);
+  };
+
+  const deleteThought = (id: string) => {
+    setThoughts((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  const resetThoughts = () => {
+    setThoughts(defaultThoughts);
+  };
 
   return (
     <div className="ws-page ws-thoughts-page">
@@ -51,15 +112,91 @@ export default function ThoughtsPage() {
       <section className="ws-list-page">
         <div className="ws-explore-head ws-thoughts-head">
           <h2>{zh ? '最近思考' : 'Recent Thoughts'}</h2>
+          <div className="ws-thought-head-actions">
+            <button type="button" className="ws-top-link" onClick={() => setIsEditing((v) => !v)}>
+              {isEditing ? (zh ? '完成编辑' : 'Done') : zh ? '编辑' : 'Edit'}
+            </button>
+            {isEditing ? (
+              <>
+                <span>/</span>
+                <button type="button" className="ws-top-link" onClick={addThought}>
+                  {zh ? '新增' : 'Add'}
+                </button>
+                <span>/</span>
+                <button type="button" className="ws-top-link" onClick={resetThoughts}>
+                  {zh ? '恢复默认' : 'Reset'}
+                </button>
+              </>
+            ) : null}
+          </div>
         </div>
 
         {thoughts.map((item) => (
           <article key={item.id} className="ws-thought-row">
-            <time>{item.date}</time>
-            <h3>{item.title[language]}</h3>
-            <p>{item.content[language]}</p>
+            {isEditing ? (
+              <div className="ws-thought-editor">
+                <label>
+                  {zh ? '日期' : 'Date'}
+                  <input
+                    type="text"
+                    value={item.date}
+                    onChange={(e) => updateThought(item.id, 'date', e.target.value)}
+                    placeholder="2026.02.22"
+                  />
+                </label>
+                <label>
+                  中文标题
+                  <input
+                    type="text"
+                    value={item.title.zh}
+                    onChange={(e) => updateThought(item.id, 'titleZh', e.target.value)}
+                  />
+                </label>
+                <label>
+                  English Title
+                  <input
+                    type="text"
+                    value={item.title.en}
+                    onChange={(e) => updateThought(item.id, 'titleEn', e.target.value)}
+                  />
+                </label>
+                <label>
+                  中文内容
+                  <textarea
+                    value={item.content.zh}
+                    onChange={(e) => updateThought(item.id, 'contentZh', e.target.value)}
+                    rows={4}
+                  />
+                </label>
+                <label>
+                  English Content
+                  <textarea
+                    value={item.content.en}
+                    onChange={(e) => updateThought(item.id, 'contentEn', e.target.value)}
+                    rows={4}
+                  />
+                </label>
+                <div className="ws-thought-editor-actions">
+                  <button type="button" className="ws-top-link" onClick={() => deleteThought(item.id)}>
+                    {zh ? '删除' : 'Delete'}
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <>
+                <time>{item.date}</time>
+                <h3>{item.title[language]}</h3>
+                <p>{item.content[language]}</p>
+              </>
+            )}
           </article>
         ))}
+
+        <p className="ws-thought-note">
+          {zh
+            ? '提示：编辑内容会自动保存在当前浏览器（仅本地可见）。'
+            : 'Note: edits are auto-saved in this browser only.'}
+        </p>
       </section>
     </div>
   );

@@ -444,6 +444,14 @@ a {
   font-weight: 500;
 }
 
+.ws-thought-head-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 14px;
+}
+
 .ws-thought-row {
   border-bottom: 2px solid var(--line);
   padding: 16px 0 18px;
@@ -465,6 +473,43 @@ a {
   margin: 10px 0 0;
   font-size: 18px;
   line-height: 1.55;
+}
+
+.ws-thought-editor {
+  display: grid;
+  gap: 10px;
+}
+
+.ws-thought-editor label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+}
+
+.ws-thought-editor input,
+.ws-thought-editor textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: var(--bg);
+  color: var(--fg);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font: inherit;
+}
+
+.ws-thought-editor textarea {
+  resize: vertical;
+}
+
+.ws-thought-editor-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ws-thought-note {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 13px;
 }
 
 @media (max-width: 900px) {
@@ -534,6 +579,11 @@ a {
 
   .ws-thought-row p {
     font-size: 16px;
+  }
+
+  .ws-thought-head-actions {
+    font-size: 13px;
+    gap: 6px;
   }
 }
 
