@@ -4,20 +4,20 @@ import TopNav from '@/components/TopNav';
 import { useLanguage } from '@/context/LanguageContext';
 
 const codematoImages = [
-  '/design/codemato/1F04390A-1981-4A26-BF9C-16C7F59C3BCA.png',
-  '/design/codemato/257F9C5A-B688-4C12-887B-0700BAEA3A0D.png',
-  '/design/codemato/602EAC4E-1811-45DB-A5FA-0DD191D8171E.png',
-  '/design/codemato/717FF3A5-3479-4BCE-9653-26A7A886EF73.png',
-  '/design/codemato/791B9C7E-208F-4DF4-952B-D93303762972.png',
-  '/design/codemato/7CB466A5-DB47-4122-A66C-9FDCBCD6CD07.png',
-  '/design/codemato/8F82B3FB-3A5E-400D-B007-A993089B82CB.png',
-  '/design/codemato/94F6074D-FA37-4A77-A025-315889841327.png',
-  '/design/codemato/9B3CE3C9-F39D-422C-91CA-71BDA13B9129.png',
-  '/design/codemato/A8DF1FFF-7946-4FBC-A5A2-84ECAF4E4348.png',
-  '/design/codemato/B0390834-A438-4CCD-BD3A-B889255FEF5A.png',
-  '/design/codemato/DB27E787-D5CE-45BF-8B70-0A32260843B1.png',
-  '/design/codemato/F4C9D592-16D3-4428-86C2-B3E43EBC0CA5.png',
-  '/design/codemato/FB772452-CA7B-4B2D-B60A-8C1948F1F20B.png',
+  '/design/codemato/1F04390A-1981-4A26-BF9C-16C7F59C3BCA.webp',
+  '/design/codemato/257F9C5A-B688-4C12-887B-0700BAEA3A0D.webp',
+  '/design/codemato/602EAC4E-1811-45DB-A5FA-0DD191D8171E.webp',
+  '/design/codemato/717FF3A5-3479-4BCE-9653-26A7A886EF73.webp',
+  '/design/codemato/791B9C7E-208F-4DF4-952B-D93303762972.webp',
+  '/design/codemato/7CB466A5-DB47-4122-A66C-9FDCBCD6CD07.webp',
+  '/design/codemato/8F82B3FB-3A5E-400D-B007-A993089B82CB.webp',
+  '/design/codemato/94F6074D-FA37-4A77-A025-315889841327.webp',
+  '/design/codemato/9B3CE3C9-F39D-422C-91CA-71BDA13B9129.webp',
+  '/design/codemato/A8DF1FFF-7946-4FBC-A5A2-84ECAF4E4348.webp',
+  '/design/codemato/B0390834-A438-4CCD-BD3A-B889255FEF5A.webp',
+  '/design/codemato/DB27E787-D5CE-45BF-8B70-0A32260843B1.webp',
+  '/design/codemato/F4C9D592-16D3-4428-86C2-B3E43EBC0CA5.webp',
+  '/design/codemato/FB772452-CA7B-4B2D-B60A-8C1948F1F20B.webp',
 ];
 
 const zhengzhongImages = ['/design/zhengzhong/zhengzhong.png'];
