@@ -2,23 +2,23 @@
 
 import TopNav from '@/components/TopNav';
 import { useLanguage } from '@/context/LanguageContext';
-import Photo01 from '../../public/photo/photo_8607.jpg';
-import Photo01A from '../../public/photo/IMG_0506.jpg';
-import Photo01C from '../../public/photo/IMG_0515.jpg';
-import Photo02 from '../../public/photo/IMG_1711.jpg';
-import Photo03 from '../../public/photo/IMG_1738.jpg';
-import Photo04 from '../../public/photo/IMG_1939.jpg';
-import Photo05 from '../../public/photo/photo_3344.jpg';
-import Photo06 from '../../public/photo/IMG_3416.jpg';
-import Photo07 from '../../public/photo/photo_3958.jpg';
-import Photo08 from '../../public/photo/IMG_4068.jpg';
-import Photo09 from '../../public/photo/IMG_4185.jpg';
-import Photo10 from '../../public/photo/photo_4259.jpg';
-import Photo11 from '../../public/photo/IMG_4296.jpg';
-import Photo12 from '../../public/photo/photo_1202.jpg';
-import Photo13 from '../../public/photo/photo_3790.jpg';
-import Photo14 from '../../public/photo/IMG_6056.jpg';
-import Photo15 from '../../public/photo/IMG_6074.jpg';
+import Photo01 from '../../public/photo/photo_8607.webp';
+import Photo01A from '../../public/photo/IMG_0506.webp';
+import Photo01C from '../../public/photo/IMG_0515.webp';
+import Photo02 from '../../public/photo/IMG_1711.webp';
+import Photo03 from '../../public/photo/IMG_1738.webp';
+import Photo04 from '../../public/photo/IMG_1939.webp';
+import Photo05 from '../../public/photo/photo_3344.webp';
+import Photo06 from '../../public/photo/IMG_3416.webp';
+import Photo07 from '../../public/photo/photo_3958.webp';
+import Photo08 from '../../public/photo/IMG_4068.webp';
+import Photo09 from '../../public/photo/IMG_4185.webp';
+import Photo10 from '../../public/photo/photo_4259.webp';
+import Photo11 from '../../public/photo/IMG_4296.webp';
+import Photo12 from '../../public/photo/photo_1202.webp';
+import Photo13 from '../../public/photo/photo_3790.webp';
+import Photo14 from '../../public/photo/IMG_6056.webp';
+import Photo15 from '../../public/photo/IMG_6074.webp';
 
 const photoItems = [
   Photo01.src,
