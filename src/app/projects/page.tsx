@@ -131,6 +131,7 @@ const projects: ProjectEntry[] = [
       en: 'It is not a chatbot layered on top of a legacy system, nor a simple LLM add-on to old workflows. It is built around real service operations from the ground up, allowing AI and agents to participate directly in lead follow-up, consultation, student assessment, school research, application collaboration, progress tracking, and document generation.\n\nIn traditional study-abroad services, student data, communication records, application status, and deliverables are often scattered across spreadsheets, chats, emails, and multiple systems. Collaboration depends heavily on manual handoffs, while knowledge is hard to retain and processes are difficult to standardize. Infinite brings these tasks into one shared business context so consultants, writing teams, and operations can collaborate more consistently and deliver faster.\n\nAt its core, Infinite treats AI as a system-level capability, not just a content generator. Agents execute tasks such as pre-meeting briefs, meeting summaries, gap analysis, school recommendations, and task advancement under clear boundaries and risk controls. The product emphasizes controllable execution and continuous evolution, positioning Infinite as an AI Native Operating Layer for international education services.',
     },
     covers: [InfiniteCover1.src, InfiniteCover2.src],
+    coverFit: 'contain',
     tags: [
       { label: { zh: '教育科技', en: 'EdTech' }, tone: 'hci' },
       { label: { zh: 'AI 原生系统', en: 'AI-Native System' }, tone: 'cv' },
