@@ -4,10 +4,10 @@ import { useMemo, useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import TopNav from '@/components/TopNav';
 import Tulipa from '../public/Tulipa.jpg';
+import LEMDCover from '../public/LEMD.png';
 
 type ExploreItem = {
   id: string;
-  featured: boolean;
   title: { zh: string; en: string };
   headline: { zh: string; en: string };
   description: { zh: string; en: string };
@@ -64,6 +64,15 @@ type PublicationItem = {
   link: string;
 };
 
+type AchievementItem = {
+  id: string;
+  org: { zh: string; en: string };
+  title: { zh: string; en: string };
+  period: { zh: string; en: string };
+  location: { zh: string; en: string };
+  description: { zh: string; en: string };
+};
+
 function SocialIcon({ type }: { type: 'linkedin' | 'github' | 'orcid' }) {
   if (type === 'linkedin') {
     return (
@@ -99,56 +108,71 @@ function SocialIcon({ type }: { type: 'linkedin' | 'github' | 'orcid' }) {
 
 const exploreItems: ExploreItem[] = [
   {
-    id: 'cv',
-    featured: true,
+    id: 'computer-vision',
     title: { zh: '计算机视觉', en: 'Computer Vision' },
-    headline: { zh: '超越像素——走向理解。', en: 'Beyond pixels toward understanding.' },
+    headline: { zh: '从感知建模到场景应用的视觉智能研究。', en: 'Research on visual intelligence from perception modeling to real-world applications.' },
     description: {
-      zh: '视觉是如何工作的？视觉可以如何帮助我们？',
-      en: 'How does vision work? How can vision help us?',
+      zh: '围绕医学影像识别、三维重建与视觉生成等方向，关注模型准确性、可解释性与部署可行性之间的平衡，并将研究结果落地到具体应用场景。',
+      en: 'My work spans medical image analysis, 3D reconstruction, and visual generation, with an emphasis on balancing model accuracy, interpretability, and deployment feasibility in applied settings.',
     },
-    linkLabel: { zh: '阅读更多', en: 'Read more' },
-    link: '#',
+    linkLabel: { zh: '查看精选项目', en: 'View Featured Projects' },
+    link: '/projects',
   },
   {
-    id: 'hci',
-    featured: true,
+    id: 'human-computer-interaction',
     title: { zh: '人机交互', en: 'Human-Computer Interaction' },
-    headline: { zh: '我们在寻求什么样的体验？', en: 'What kind of experience are we seeking?' },
+    headline: { zh: '面向协作与决策场景的交互机制研究。', en: 'Interaction research for collaboration and decision-making scenarios.' },
     description: {
-      zh: '如何与计算机交互？如何与人类交互？',
-      en: 'How do we interact with computers? How do we interact with humans?',
+      zh: '聚焦数字协作空间、职业测评与教育产品界面的交互设计，研究信息组织、任务引导与反馈机制如何提升用户理解与行动效率。',
+      en: 'I study interaction design in digital collaboration spaces, career assessment systems, and education products, focusing on how information architecture, task guidance, and feedback loops improve user understanding and action efficiency.',
     },
-    linkLabel: { zh: '阅读更多', en: 'Read more' },
-    link: '#',
+    linkLabel: { zh: '查看精选项目', en: 'View Featured Projects' },
+    link: '/projects',
   },
   {
-    id: 'agent',
-    featured: true,
-    title: { zh: 'AI 智能体', en: 'AI Agent' },
-    headline: { zh: '我还在持续探索 Agent。', en: 'I am still exploring agent systems.' },
+    id: 'agent-workflow-systems',
+    title: { zh: 'Agent 工作流与系统工程', en: 'Agent Workflows and Systems Engineering' },
+    headline: { zh: '面向垂直业务场景的可执行智能体系统。', en: 'Executable agent systems for vertical business operations.' },
     description: {
-      zh: '目前在持续研究与实践基于 Agent 的工作流与应用场景。',
-      en: 'I am continuously researching and building agent-based workflows and applications.',
+      zh: '围绕 Agent 编排、CLI 能力抽象与业务流程自动化，持续探索可观测、可回滚、可协作的人机共创执行框架，提升复杂任务的稳定交付能力。',
+      en: 'I investigate agent orchestration, composable CLI capabilities, and workflow automation to build observable, rollback-safe, and collaborative human-AI execution frameworks for reliable delivery in complex tasks.',
     },
-    linkLabel: { zh: '持续更新', en: 'Ongoing' },
-    link: '#',
+    linkLabel: { zh: '查看精选项目', en: 'View Featured Projects' },
+    link: '/projects',
   },
   {
-    id: 'photo',
-    featured: false,
-    title: { zh: '摄影', en: 'Photography' },
-    headline: { zh: '只凭一张照片不足以了解一个人。', en: 'A single photo is never enough to know someone.' },
+    id: 'ai-education-systems',
+    title: { zh: 'AI + 教育系统', en: 'AI + Education Systems' },
+    headline: { zh: '从研究方法到教育服务系统落地。', en: 'From research methodology to deployable education service systems.' },
     description: {
-      zh: '我用摄影记录生活，拍摄胶片与数码影像。',
-      en: 'I document life through both film and digital photography.',
+      zh: '结合教育科技与生成式 AI，在招生咨询、学业规划、组卷评估与知识沉淀等环节构建系统化方案，推动研究成果向真实业务转化。',
+      en: 'Combining EdTech and generative AI, I build system-level solutions for consultation, planning, assessment, and knowledge operations, translating research outcomes into real educational workflows.',
     },
-    linkLabel: { zh: '查看更多', en: 'See more' },
-    link: '#',
+    linkLabel: { zh: '查看精选项目', en: 'View Featured Projects' },
+    link: '/projects',
   },
 ];
 
 const educationItems: EducationItem[] = [
+  {
+    id: 'uva-phd-ai',
+    school: { zh: '阿姆斯特丹大学', en: 'University of Amsterdam' },
+    level: { zh: '博士生', en: 'PhD' },
+    period: { zh: '2023.12 - 至今', en: '2023.12 - Present' },
+    location: { zh: '阿姆斯特丹, 荷兰', en: 'Amsterdam, Netherlands' },
+    degree: { zh: '人工智能博士', en: 'PhD in Artificial Intelligence' },
+  },
+  {
+    id: 'ccaim-summer-school-edu',
+    school: { zh: '剑桥大学', en: 'University of Cambridge' },
+    level: { zh: '暑期学校', en: 'Summer School' },
+    period: { zh: '2022.09', en: 'September, 2022' },
+    location: { zh: '英国，剑桥', en: 'Cambridge, UK' },
+    degree: {
+      zh: 'CCAIM AI and Machine Learning Summer School（医疗健康 AI 与机器学习）',
+      en: 'CCAIM AI and Machine Learning Summer School (AI and Machine Learning in Healthcare)',
+    },
+  },
   {
     id: 'columbia',
     school: { zh: '阿姆斯特丹大学 / 阿姆斯特丹自由大学', en: 'University of Amsterdam / Vrije Universiteit Amsterdam' },
@@ -176,12 +200,7 @@ const otherItems: OtherItem[] = [
       {
         text: { zh: '我拍摄胶片和数码照片。', en: 'I shoot both film and digital photos.' },
         linkLabel: { zh: '阅读更多', en: 'Read more' },
-        link: '#',
-      },
-      {
-        text: { zh: '只凭一张照片不足以了解一个人。', en: 'A single photo is not enough to know a person.' },
-        linkLabel: { zh: '查看更多', en: 'See more' },
-        link: '#',
+        link: '/photo',
       },
     ],
   },
@@ -200,7 +219,7 @@ const otherItems: OtherItem[] = [
       {
         text: { zh: '我的设计精选。', en: 'A selection of my design works.' },
         linkLabel: { zh: '阅读更多', en: 'Read more' },
-        link: '#',
+        link: '/design',
       },
     ],
   },
@@ -217,8 +236,8 @@ const workItems: WorkItem[] = [
     location: { zh: '澳门, 中国', en: 'Macau, China' },
     period: { zh: '2024.08 - 至今', en: '2024.08 - Present' },
     description: {
-      zh: 'CHM 教育与文化交流协会致力于推动中国、香港、澳门及其他地区之间的教育与文化交流。协会作为桥梁，促进教育机构、文化组织与个人之间的相互理解、协作与知识共享。',
-      en: 'The CHM Education and Cultural Exchange Association is an organization dedicated to promoting educational and cultural exchanges between China, Hong Kong, Macau, and other regions. The association serves as a bridge to enhance mutual understanding, collaboration, and knowledge sharing among educational institutions, cultural organizations, and individuals.',
+      zh: 'CHM 教育与文化交流协会致力于推动中国、香港、澳门及其他地区之间的教育与文化交流。协会作为桥梁，促进国内和海外高校、文化组织与个人之间的相互理解、协作与知识共享。',
+      en: 'The CHM Education and Cultural Exchange Association is dedicated to promoting educational and cultural exchanges between China, Hong Kong, Macau, and other regions. The association serves as a bridge to enhance mutual understanding, collaboration, and knowledge sharing among domestic and international universities, cultural organizations, and individuals.',
     },
   },
   {
@@ -244,6 +263,17 @@ const workItems: WorkItem[] = [
     description: {
       zh: 'StudyLandsEdu 是一家技术驱动的国际教育公司，聚焦留学服务创新。我们通过大数据与 AI 整合海外教育资源，提供高质量留学服务；同时为其他机构提供运营管理解决方案，帮助其降本增效。',
       en: 'StudyLandsEdu is a tech-driven education company focused on innovating international education. We integrate overseas educational resources to deliver high-quality study abroad services using big data and AI. SLE also offers comprehensive operational management solutions to other companies, helping them cut costs and boost efficiency.',
+    },
+  },
+  {
+    id: 'student-mentor-admission',
+    org: { zh: '阿姆斯特丹大学', en: 'University of Amsterdam' },
+    title: { zh: '学生导师与招生支持', en: 'Student Mentor and Admissions Support' },
+    location: { zh: '阿姆斯特丹, 荷兰', en: 'Amsterdam, NL' },
+    period: { zh: '2022.11 - 2024.02', en: 'Nov 2022 - Feb 2024' },
+    description: {
+      zh: '作为学生导师支持学生适应学术与校园生活；同时参与招生支持工作，包括申请材料评估、面试协助与候选人筛选。',
+      en: 'Supported students as a mentor in academic and campus adaptation, while contributing to admissions support through application review, interview assistance, and candidate screening.',
     },
   },
   {
@@ -319,13 +349,30 @@ const publications: PublicationItem[] = [
 
 const researchItems: ResearchItem[] = [
   {
+    id: 'hkust-gz-ra',
+    org: {
+      zh: '香港科技大学（广州）',
+      en: 'The Hong Kong University of Science and Technology (Guangzhou)',
+    },
+    title: { zh: '研究助理', en: 'Research Assistant' },
+    location: { zh: '广州, 中国', en: 'Guangzhou, China' },
+    period: { zh: '2024.08.30 - 2025.12.31', en: '2024.08.30 - 2025.12.31' },
+    description: {
+      zh: '在香港科技大学（广州）担任研究助理（导师：Prof. Hui Xiong、Dr. Runwei Guan），研究方向聚焦多模态感知与视觉语言建模在无人系统场景中的应用。主要负责数据体系构建与标注规范设计、模型方案调研与实验迭代、视觉到语言模块优化，以及多指标评测与结果分析。工作内容覆盖从数据治理、模型训练到性能对比与论文支撑的完整研究流程，重点提升系统在边缘部署条件下的语义理解能力、长文本生成质量与推理效率。',
+      en: 'Served as a Research Assistant at HKUST (Guangzhou) under Prof. Hui Xiong and Dr. Runwei Guan, with a research focus on multimodal perception and vision-language modeling for autonomous systems. My core responsibilities included dataset construction and annotation protocol design, model investigation and experiment iteration, optimization of vision-to-language modules, and multi-metric evaluation with result analysis. The work covered the full research cycle from data governance and model training to benchmarking and paper support, with emphasis on improving semantic understanding, long-form generation quality, and inference efficiency under edge-deployment constraints.',
+    },
+  },
+  {
     id: 'kbqa',
     org: { zh: 'KBQA 文献综述', en: 'Literature Review of KBQA' },
-    title: { zh: '知识表示与推理研究组', en: 'Knowledge Representation and Reasoning Group' },
+    title: {
+      zh: '知识表示与推理研究组（阿姆斯特丹自由大学）',
+      en: 'Knowledge Representation and Reasoning Group (Vrije Universiteit Amsterdam)',
+    },
     location: { zh: '阿姆斯特丹, 荷兰', en: 'Amsterdam, Netherlands' },
     period: { zh: '2023.01 - 2023.08', en: '2023.01 - 2023.08' },
     description: {
-      zh: '围绕知识库问答（KBQA）方向系统梳理 2020-2023 年代表性研究工作，总结方法演进路径，并识别当前研究中的关键趋势与空白。',
+      zh: '围绕知识图谱问答系统（KGQA）方向系统梳理 2020-2023 年代表性研究工作，总结方法演进路径，并识别当前研究中的关键趋势与空白。',
       en: 'Conducted an extensive literature review on state-of-the-art approaches to Knowledge-Based Question Answering, synthesizing findings from research papers (2020-2023) and identifying key trends and gaps in the field.',
     },
   },
@@ -342,20 +389,168 @@ const researchItems: ResearchItem[] = [
   },
   {
     id: 'ra',
-    org: { zh: '研究助理', en: 'Research Assistant' },
-    title: { zh: '导师：Smith W.L. J', en: 'Advised by Smith W.L. J' },
+    org: {
+      zh: '麻省工程医学与关键数据实验室（LEMD）',
+      en: 'Massachusetts Laboratory for Engineering Medicine and Critical Data (LEMD)',
+    },
+    title: { zh: '研究助理', en: 'Research Assistant' },
     location: { zh: '远程', en: 'Remote' },
     period: { zh: '2022.09 - 2022.11', en: '2022.09 - 2022.11' },
     description: {
-      zh: '开展基于 ECG 的心血管疾病诊断与预测深度学习算法研究，并在麻省工程医学与关键数据实验室（LEMD）完成国际生物医学数据库网站原型设计。',
-      en: 'Conducted advanced research on deep learning algorithms for ECG-based cardiovascular disease diagnosis and prediction, and completed a prototype design for an international biomedical database website at the Massachusetts Laboratory for Engineering Medicine and Critical Data (LEMD).',
+      zh: '导师：Smith W.L. J。开展基于 ECG 的心血管疾病诊断与预测深度学习算法研究，并完成国际生物医学研究平台原型设计。',
+      en: 'Advised by Smith W.L. J. Conducted advanced research on deep learning algorithms for ECG-based cardiovascular disease diagnosis and prediction, and completed a prototype design for an international biomedical research platform.',
+    },
+  },
+];
+
+const achievementItems: AchievementItem[] = [
+  {
+    id: 'google-prompting-essentials',
+    org: { zh: 'Google 提示工程核心课程', en: 'Google Prompting Essentials' },
+    title: { zh: 'Agent / 生成式 AI 认证', en: 'Agent / GenAI Certification' },
+    period: { zh: '2026.02', en: '2026.02' },
+    location: { zh: '远程', en: 'Remote' },
+    description: {
+      zh: '聚焦提示词设计、上下文组织与可复用 Prompt 模板构建，提升实际业务场景中的生成式 AI 使用效率。',
+      en: 'Focused on prompt design, context structuring, and reusable prompt patterns to improve practical GenAI workflows.',
+    },
+  },
+  {
+    id: 'ibm-rag-agentic-ai',
+    org: { zh: 'IBM RAG 与 Agentic AI 专业认证', en: 'IBM RAG and Agentic AI Professional Certificate' },
+    title: { zh: 'Agent / 生成式 AI 认证', en: 'Agent / GenAI Certification' },
+    period: { zh: '2026.01', en: '2026.01' },
+    location: { zh: '远程', en: 'Remote' },
+    description: {
+      zh: '围绕 RAG 与 Agentic AI 架构学习检索增强、工具调用与任务编排能力。',
+      en: 'Focused on RAG and agentic architectures, including retrieval, tool use, and task orchestration.',
+    },
+  },
+  {
+    id: 'ml-in-production',
+    org: { zh: '生产环境机器学习（MLOps）', en: 'Machine Learning in Production (MLOps)' },
+    title: { zh: 'ML 工程化认证', en: 'ML Engineering Certification' },
+    period: { zh: '2025.04', en: '2025.04' },
+    location: { zh: '远程', en: 'Remote' },
+    description: {
+      zh: '面向生产环境学习模型部署、监控、迭代与可靠性保障流程。',
+      en: 'Learned production ML workflows for deployment, monitoring, iteration, and reliability.',
+    },
+  },
+  {
+    id: 'data-engineering-dlai',
+    org: { zh: 'DeepLearning.AI 数据工程专业认证', en: 'DeepLearning.AI Data Engineering Professional Certificate' },
+    title: { zh: '数据与系统认证', en: 'Data & Systems Certification' },
+    period: { zh: '2025.12', en: '2025.12' },
+    location: { zh: '远程', en: 'Remote' },
+    description: {
+      zh: '围绕数据管道、数据建模与系统化工程能力，强化数据驱动产品的架构基础。',
+      en: 'Focused on data pipelines, modeling, and engineering foundations for data-driven products.',
+    },
+  },
+  {
+    id: 'google-advanced-data-analytics',
+    org: { zh: 'Google 高级数据分析专业认证', en: 'Google Advanced Data Analytics Professional Certificate' },
+    title: { zh: '数据与系统认证', en: 'Data & Systems Certification' },
+    period: { zh: '2025.01', en: '2025.01' },
+    location: { zh: '远程', en: 'Remote' },
+    description: {
+      zh: '增强统计分析、建模与可解释分析能力，支持教育与 AI 业务的决策优化。',
+      en: 'Strengthened analytics, modeling, and interpretability skills for AI and education product decisions.',
+    },
+  },
+  {
+    id: 'british-council-advisor-cert',
+    org: { zh: '英国教育升学顾问资格证书', en: 'British Council Certified Education Consultant' },
+    title: { zh: '英国文化教育协会（British Council）', en: 'British Council' },
+    period: { zh: '2024 - 至今', en: '2024 - Present' },
+    location: { zh: '远程', en: 'Remote' },
+    description: {
+      zh: '获得 British Council 英国教育升学顾问资格认证，系统掌握英国教育体系与升学咨询规范。',
+      en: 'Earned the British Council Certified Education Consultant credential, with structured training in UK education systems and admissions advising standards.',
+    },
+  },
+  {
+    id: 'coursera-prompt',
+    org: { zh: 'ChatGPT 提示工程', en: 'Prompt Engineering for ChatGPT' },
+    title: { zh: 'Coursera 认证', en: 'Coursera Certification' },
+    period: { zh: '2024.07', en: '2024.07' },
+    location: { zh: '远程', en: 'Remote' },
+    description: {
+      zh: '完成 Prompt Engineering for ChatGPT 课程学习并获得认证。',
+      en: 'Completed the Prompt Engineering for ChatGPT course and earned certification.',
+    },
+  },
+  {
+    id: 'huawei-ai-cert',
+    org: { zh: '华为云人工智能技能认证', en: 'Huawei Cloud Artificial Intelligence Skills Certification' },
+    title: { zh: '华为云 AI 技能认证', en: 'Huawei Cloud AI Skills Certification' },
+    period: { zh: '2020.08', en: '2020.08' },
+    location: { zh: '远程', en: 'Remote' },
+    description: {
+      zh: '完成 ModelArts 智能花卉图像识别项目实践。',
+      en: 'Completed the ModelArts intelligent flower image recognition practice project.',
+    },
+  },
+  {
+    id: 'huawei-kunpeng-cert',
+    org: { zh: '华为云鲲鹏技能认证', en: 'Huawei Cloud Kunpeng Skills Certification' },
+    title: { zh: '华为云技能认证（鲲鹏方向）', en: 'Huawei Cloud Skills Certification (Kunpeng Track)' },
+    period: { zh: '2020.08', en: '2020.08' },
+    location: { zh: '远程', en: 'Remote' },
+    description: {
+      zh: '完成鲲鹏计算平台软件迁移相关实践。',
+      en: 'Completed practical training on software migration on the Kunpeng computing platform.',
+    },
+  },
+  {
+    id: 'huading-awards',
+    org: { zh: '澳门华鼎奖（第25-26届）', en: 'Macau Huading Awards (25th - 26th)' },
+    title: { zh: '活动协调与嘉宾对接', en: 'Event Coordination and Guest Liaison' },
+    period: { zh: '2019.12', en: '2019.12' },
+    location: { zh: '澳门, 中国', en: 'Macau, China' },
+    description: {
+      zh: '负责与艺人及其团队沟通协调，保障活动期间需求对接与流程顺畅。',
+      en: 'Coordinated with celebrities and their teams to ensure smooth communication and operational execution throughout the event.',
+    },
+  },
+  {
+    id: 'internet-plus',
+    org: { zh: '第六届全国“互联网+”创新创业大赛', en: 'The 6th National Internet+ Innovation and Entrepreneurship Competition' },
+    title: { zh: 'AR 旅游纪念体验先锋（铜奖）', en: 'The Pioneer of AR Tourism Souvenir Experience - Bronze Award' },
+    period: { zh: '2018.02.03', en: '2018.02.03' },
+    location: { zh: '河北, 中国', en: 'Hebei, China' },
+    description: {
+      zh: '项目获铜奖，聚焦 AR 与旅游纪念场景结合的产品创新。',
+      en: 'Won Bronze Award with an AR tourism souvenir experience project focused on product innovation.',
+    },
+  },
+  {
+    id: 'macau-finance-awards',
+    org: { zh: '澳门财经风云榜', en: 'Macau Financial Excellence Awards' },
+    title: { zh: '三年优秀志愿者代表', en: 'Three-Year Outstanding Volunteer Representative' },
+    period: { zh: '2017 - 2019', en: '2017 - 2019' },
+    location: { zh: '澳门, 中国', en: 'Macau, China' },
+    description: {
+      zh: '连续多年参与并获得优秀志愿者代表认可。',
+      en: 'Recognized as an outstanding volunteer representative across three consecutive years.',
+    },
+  },
+  {
+    id: 'boao-forum',
+    org: { zh: '博鳌亚洲论坛（澳门）', en: 'Boao Forum for Asia, Macau' },
+    title: { zh: '优秀志愿者', en: 'Outstanding Volunteer' },
+    period: { zh: '2017.11', en: '2017.11' },
+    location: { zh: '澳门, 中国', en: 'Macau, China' },
+    description: {
+      zh: '参与论坛志愿服务并获得优秀志愿者称号。',
+      en: 'Contributed to forum operations and received the Outstanding Volunteer recognition.',
     },
   },
 ];
 
 export default function Home() {
   const { language } = useLanguage();
-  const [mode, setMode] = useState<'featured' | 'all'>('featured');
   const [expandedExploreId, setExpandedExploreId] = useState<string | null>(null);
   const [expandedPublicationId, setExpandedPublicationId] = useState<string | null>(null);
   const [expandedEducationId, setExpandedEducationId] = useState<string | null>(null);
@@ -364,10 +559,6 @@ export default function Home() {
   const [expandedOtherId, setExpandedOtherId] = useState<string | null>(null);
 
   const zh = language === 'zh';
-  const list = useMemo(
-    () => (mode === 'featured' ? exploreItems.filter((item) => item.featured) : exploreItems),
-    [mode]
-  );
   const getStartSortValue = (period: string): number => {
     const match = period.match(/(\d{4})(?:\.(\d{1,2}))?/);
     if (!match) return 0;
@@ -391,6 +582,10 @@ export default function Home() {
     () => [...workItems].sort((a, b) => getStartSortValue(b.period.zh) - getStartSortValue(a.period.zh)),
     []
   );
+  const sortedAchievements = useMemo(
+    () => [...achievementItems].sort((a, b) => getStartSortValue(b.period.zh) - getStartSortValue(a.period.zh)),
+    []
+  );
 
   return (
     <div className="ws-page">
@@ -412,7 +607,9 @@ export default function Home() {
               <SocialIcon type="orcid" />
               <span>ORCID</span>
             </a>
-            <a href="#">CV</a>
+            <span className="ws-link-disabled" aria-disabled="true">
+              CV
+            </span>
             <a href="mailto:evanxusci@gmail.com">evanxusci [at] gmail [dot] com</a>
           </div>
         </div>
@@ -425,26 +622,9 @@ export default function Home() {
       <section className="ws-explore">
         <div className="ws-explore-head">
           <h2>{zh ? '探索' : 'Explore'}</h2>
-          <div className="ws-switch">
-            <button
-              type="button"
-              onClick={() => setMode('featured')}
-              className={mode === 'featured' ? 'is-active' : ''}
-            >
-              {zh ? '精选' : 'Featured'}
-            </button>
-            <span>/</span>
-            <button
-              type="button"
-              onClick={() => setMode('all')}
-              className={mode === 'all' ? 'is-active' : ''}
-            >
-              {zh ? '全部' : 'All'}
-            </button>
-          </div>
         </div>
 
-        {list.map((item) => (
+        {exploreItems.map((item) => (
           <article key={item.id} className="ws-item">
             <button
               type="button"
@@ -458,7 +638,7 @@ export default function Home() {
             {expandedExploreId === item.id ? (
               <div className="ws-item-sub">
                 <p>{item.description[language]}</p>
-                <a href={item.link}>{item.linkLabel[language]}</a>
+                {item.linkLabel[language] ? <a href={item.link}>{item.linkLabel[language]}</a> : null}
               </div>
             ) : null}
           </article>
@@ -485,6 +665,7 @@ export default function Home() {
               <div className="ws-item-sub ws-entry-sub ws-work-sub">
                 <p className="ws-work-location">{item.location[language]}</p>
                 <p>{item.description[language]}</p>
+                {item.id === 'ra' ? <img src={LEMDCover.src} alt="LEMD project preview" className="ws-work-figure" loading="lazy" /> : null}
               </div>
             ) : null}
           </article>
@@ -571,6 +752,21 @@ export default function Home() {
                 <p>{item.description[language]}</p>
               </div>
             ) : null}
+          </article>
+        ))}
+      </section>
+
+      <section className="ws-section-block">
+        <div className="ws-explore-head">
+          <h2>{zh ? '成就与贡献' : 'Achievements and Contributions'}</h2>
+        </div>
+        {sortedAchievements.map((item) => (
+          <article key={item.id} className="ws-item">
+            <div className="ws-entry-head ws-work-head">
+              <h3>{item.org[language]}</h3>
+              <p>{item.title[language]}</p>
+              <time>{item.period[language]}</time>
+            </div>
           </article>
         ))}
       </section>

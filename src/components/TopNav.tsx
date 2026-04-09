@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 import { useTheme } from '@/context/ThemeContext';
 
-type ActiveTab = 'home' | 'projects' | 'thoughts';
+type ActiveTab = 'home' | 'projects';
 
 export default function TopNav({ active }: { active: ActiveTab }) {
   const { language, setLanguage } = useLanguage();
@@ -40,11 +40,7 @@ export default function TopNav({ active }: { active: ActiveTab }) {
         </Link>
         <span>/</span>
         <Link href="/projects" className={active === 'projects' ? 'is-active' : ''}>
-          {zh ? '项目' : 'Projects'}
-        </Link>
-        <span>/</span>
-        <Link href="/thoughts" className={active === 'thoughts' ? 'is-active' : ''}>
-          {zh ? '最近思考' : 'Thoughts'}
+          {zh ? '精选项目' : 'Featured Projects'}
         </Link>
       </nav>
 

@@ -152,7 +152,7 @@ interface LanguageProviderProps {
 }
 
 export function LanguageProvider({ children }: LanguageProviderProps) {
-  const [language, setLanguage] = useState<Language>('zh');
+  const [language, setLanguage] = useState<Language>('en');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -161,13 +161,8 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
     if (savedLanguage && (savedLanguage === 'en' || savedLanguage === 'zh')) {
       setLanguage(savedLanguage);
     } else {
-      // Default to Chinese based on browser preference
-      const browserLang = navigator.language;
-      if (browserLang.startsWith('zh')) {
-        setLanguage('zh');
-      } else {
-        setLanguage('en');
-      }
+      // Default language for first-time visitors
+      setLanguage('en');
     }
   }, []);
 
